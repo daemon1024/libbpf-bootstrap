@@ -210,11 +210,9 @@ TIME     EVENT COMM             PID     PPID    FILENAME/EXIT CODE
 CMake build:
 
 ```shell
-$ git submodule update --init --recursive       # check out libbpf
-$ mkdir build && cd build
-$ cmake ../examples/c
-$ make
-$ sudo ./bootstrap
+git submodule update --init --recursive       # check out libbpf
+cmake -Hexamples/c -Bbuild
+cmake --build build
 <...>
 ```
 
