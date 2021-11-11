@@ -1,10 +1,14 @@
+
 #include "vmlinux.h"
 #include <bpf/bpf_helpers.h>
 #include <bpf/bpf_tracing.h>
 
-char LICENSE[] SEC("license") = "Dual BSD/GPL";
 
 #define PATHLEN 256
+
+char LICENSE[] SEC("license") = "Dual BSD/GPL";
+
+SEC("lsm/file_mprotect")
 
 struct output {
     u32 uid;
@@ -26,5 +30,7 @@ int BPF_PROG(print_name, struct linux_binprm *bprm, int ret)
         }
     }
 
+
     return 0;
 }
+
